@@ -1,0 +1,646 @@
+@import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 14px;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #001B48;
+  --primary-foreground: #ffffff;
+  --secondary: #f8fafc;
+  --secondary-foreground: #001B48;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #97CADB;
+  --accent-foreground: #001B48;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: transparent;
+  --input-background: #f8fafc;
+  --switch-background: #cbd5e1;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #001B48;
+  
+  /* Nouvelle palette Fixify avec focus sur les tons sombres */
+  --fixify-navy: #001B48;
+  --fixify-blue-dark: #02457A;
+  --fixify-blue: #018ABE;
+  --fixify-blue-light: #97CADB;
+  --fixify-blue-lighter: #D6EBEE;
+  
+  /* Nouveaux tons dark et leurs shades */
+  --fixify-dark-primary: #001B48;
+  --fixify-dark-secondary: #0A2A5C;
+  --fixify-dark-accent: #02457A;
+  --fixify-medium: #018ABE;
+  --fixify-light: #97CADB;
+  --fixify-lightest: #D6EBEE;
+  
+  /* Variables gris pour les overlays */
+  --gray-light: #f8f9fa;
+  --gray-medium: #6c757d;
+  --gray-dark: #343a40;
+  
+  /* Variables de charts avec la nouvelle palette */
+  --chart-1: #001B48;
+  --chart-2: #02457A;
+  --chart-3: #018ABE;
+  --chart-4: #97CADB;
+  --chart-5: #D6EBEE;
+  
+  --radius: 0.75rem;
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #001B48;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #001B48;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #001B48;
+}
+
+.dark {
+  --background: #001B48;
+  --foreground: #D6EBEE;
+  --card: #02457A;
+  --card-foreground: #D6EBEE;
+  --popover: #02457A;
+  --popover-foreground: #D6EBEE;
+  --primary: #018ABE;
+  --primary-foreground: #ffffff;
+  --secondary: #02457A;
+  --secondary-foreground: #D6EBEE;
+  --muted: #02457A;
+  --muted-foreground: #97CADB;
+  --accent: #02457A;
+  --accent-foreground: #018ABE;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #02457A;
+  --input: #02457A;
+  --ring: #018ABE;
+  
+  --sidebar: #02457A;
+  --sidebar-foreground: #D6EBEE;
+  --sidebar-primary: #018ABE;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #001B48;
+  --sidebar-accent-foreground: #D6EBEE;
+  --sidebar-border: #001B48;
+  --sidebar-ring: #018ABE;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  
+  /* Nouvelle palette de couleurs Fixify avec tons sombres */
+  --color-fixify-navy: var(--fixify-navy);
+  --color-fixify-blue-dark: var(--fixify-blue-dark);
+  --color-fixify-blue: var(--fixify-blue);
+  --color-fixify-blue-light: var(--fixify-blue-light);
+  --color-fixify-blue-lighter: var(--fixify-blue-lighter);
+  
+  --color-fixify-dark-primary: var(--fixify-dark-primary);
+  --color-fixify-dark-secondary: var(--fixify-dark-secondary);
+  --color-fixify-dark-accent: var(--fixify-dark-accent);
+  --color-fixify-medium: var(--fixify-medium);
+  --color-fixify-light: var(--fixify-light);
+  --color-fixify-lightest: var(--fixify-lightest);
+  
+  --color-gray-light: var(--gray-light);
+  --color-gray-medium: var(--gray-medium);
+  --color-gray-dark: var(--gray-dark);
+  
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Classes utilitaires Fixify avec palette dark */
+.fixify-gradient-dark {
+  background: linear-gradient(135deg, var(--fixify-dark-primary) 0%, var(--fixify-dark-accent) 100%);
+}
+
+.fixify-gradient-full-dark {
+  background: linear-gradient(135deg, var(--fixify-dark-primary) 0%, var(--fixify-dark-secondary) 25%, var(--fixify-dark-accent) 50%, var(--fixify-medium) 75%, var(--fixify-light) 100%);
+}
+
+.fixify-glass-dark {
+  background: rgba(0, 27, 72, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 27, 72, 0.2);
+}
+
+.fixify-badge-dark {
+  background: var(--fixify-dark-primary);
+  color: var(--fixify-lightest);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Nouveau gradient radial utilitaire */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Animation de rotation lente améliorée */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+/* Animations personnalisées avec palette dark améliorées */
+@keyframes float1 {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+    opacity: 0.6; 
+  }
+  50% { 
+    transform: translateY(-25px) rotate(180deg) scale(1.1); 
+    opacity: 1; 
+  }
+}
+
+@keyframes float2 {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+    opacity: 0.5; 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(-180deg) scale(1.15); 
+    opacity: 0.9; 
+  }
+}
+
+@keyframes float3 {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+    opacity: 0.7; 
+  }
+  50% { 
+    transform: translateY(-30px) rotate(90deg) scale(1.05); 
+    opacity: 1; 
+  }
+}
+
+@keyframes shimmer {
+  0% { 
+    background-position: -200% 0; 
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% { 
+    background-position: 200% 0; 
+    opacity: 0;
+  }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(0, 27, 72, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(0, 27, 72, 0.7), 0 0 30px rgba(0, 27, 72, 0.5);
+  }
+}
+
+/* Nouvelle animation de breathing pour les particules */
+@keyframes breathe {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Animation de pulse sophistiquée */
+@keyframes sophisticatedPulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.7;
+    filter: blur(0px);
+  }
+  50% { 
+    transform: scale(1.1);
+    opacity: 1;
+    filter: blur(1px);
+  }
+}
+
+/* Animation de morphing pour les formes */
+@keyframes morph {
+  0%, 100% { 
+    border-radius: 50%;
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    border-radius: 25%;
+    transform: rotate(90deg) scale(1.1);
+  }
+  50% {
+    border-radius: 10%;
+    transform: rotate(180deg) scale(0.9);
+  }
+  75% {
+    border-radius: 35%;
+    transform: rotate(270deg) scale(1.05);
+  }
+}
+
+/* Effets de hover sophistiqués avec palette dark */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 35px -5px rgba(0, 27, 72, 0.3), 0 5px 15px -5px rgba(0, 27, 72, 0.2);
+}
+
+.shimmer-effect {
+  background: linear-gradient(90deg, transparent, rgba(0, 27, 72, 0.2), transparent);
+  background-size: 2000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+.gradient-text-dark {
+  background: linear-gradient(45deg, #001B48, #02457A, #018ABE, #97CADB);
+  background-size: 300% 300%;
+  animation: gradientMove 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Micro-animations améliorées */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out;
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 0.7s ease-out;
+}
+
+.animate-bounceIn {
+  animation: bounceIn 0.8s ease-out;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.animate-morph {
+  animation: morph 8s ease-in-out infinite;
+}
+
+.animate-sophisticated-pulse {
+  animation: sophisticatedPulse 3s ease-in-out infinite;
+}
+
+.animate-float1 {
+  animation: float1 6s ease-in-out infinite;
+}
+
+.animate-float2 {
+  animation: float2 7s ease-in-out infinite;
+}
+
+.animate-float3 {
+  animation: float3 5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* Amélioration des ombres avec palette dark */
+.shadow-fixify-dark {
+  box-shadow: 0 10px 25px -5px rgba(0, 27, 72, 0.15), 0 8px 10px -6px rgba(0, 27, 72, 0.12);
+}
+
+.shadow-fixify-dark-lg {
+  box-shadow: 0 25px 50px -12px rgba(0, 27, 72, 0.25), 0 8px 16px -8px rgba(0, 27, 72, 0.15);
+}
+
+.shadow-fixify-dark-xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 27, 72, 0.3), 0 15px 25px -8px rgba(0, 27, 72, 0.2);
+}
+
+/* Nouvelles ombres intérieures */
+.shadow-inner-light {
+  box-shadow: inset 0 2px 4px 0 rgba(255, 255, 255, 0.1);
+}
+
+.shadow-inner-dark {
+  box-shadow: inset 0 2px 4px 0 rgba(0, 27, 72, 0.1);
+}
+
+/* Animation fluide pour les icônes améliorée */
+.icon-float {
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    filter: drop-shadow(0 4px 8px rgba(0, 27, 72, 0.2));
+  }
+  50% { 
+    transform: translateY(-5px) rotate(2deg); 
+    filter: drop-shadow(0 8px 16px rgba(0, 27, 72, 0.3));
+  }
+}
+
+.icon-sparkle {
+  animation: iconSparkle 3s ease-in-out infinite;
+}
+
+@keyframes iconSparkle {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 0.7;
+    filter: brightness(1);
+  }
+  50% { 
+    transform: scale(1.15) rotate(180deg); 
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+}
+
+/* Nouvel effet de vague */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-wave {
+  animation: wave 2s ease-in-out infinite;
+}
+
+/* Classes utilitaires pour la nouvelle palette dark */
+.bg-fixify-dark-primary { background-color: var(--fixify-dark-primary); }
+.bg-fixify-dark-secondary { background-color: var(--fixify-dark-secondary); }
+.bg-fixify-dark-accent { background-color: var(--fixify-dark-accent); }
+.bg-fixify-medium { background-color: var(--fixify-medium); }
+.bg-fixify-light { background-color: var(--fixify-light); }
+.bg-fixify-lightest { background-color: var(--fixify-lightest); }
+
+.text-fixify-dark-primary { color: var(--fixify-dark-primary); }
+.text-fixify-dark-secondary { color: var(--fixify-dark-secondary); }
+.text-fixify-dark-accent { color: var(--fixify-dark-accent); }
+.text-fixify-medium { color: var(--fixify-medium); }
+.text-fixify-light { color: var(--fixify-light); }
+.text-fixify-lightest { color: var(--fixify-lightest); }
+
+.border-fixify-dark-primary { border-color: var(--fixify-dark-primary); }
+.border-fixify-dark-secondary { border-color: var(--fixify-dark-secondary); }
+.border-fixify-dark-accent { border-color: var(--fixify-dark-accent); }
+.border-fixify-medium { border-color: var(--fixify-medium); }
+.border-fixify-light { border-color: var(--fixify-light); }
+.border-fixify-lightest { border-color: var(--fixify-lightest); }
+
+/* Classes pour les tons gris */
+.bg-gray-light { background-color: var(--gray-light); }
+.bg-gray-medium { background-color: var(--gray-medium); }
+.bg-gray-dark { background-color: var(--gray-dark); }
+
+.text-gray-light { color: var(--gray-light); }
+.text-gray-medium { color: var(--gray-medium); }
+.text-gray-dark { color: var(--gray-dark); }
+
+/* Classes legacy pour compatibilité */
+.bg-fixify-navy { background-color: var(--fixify-navy); }
+.bg-fixify-blue-dark { background-color: var(--fixify-blue-dark); }
+.bg-fixify-blue { background-color: var(--fixify-blue); }
+.bg-fixify-blue-light { background-color: var(--fixify-blue-light); }
+.bg-fixify-blue-lighter { background-color: var(--fixify-blue-lighter); }
+
+.text-fixify-navy { color: var(--fixify-navy); }
+.text-fixify-blue-dark { color: var(--fixify-blue-dark); }
+.text-fixify-blue { color: var(--fixify-blue); }
+.text-fixify-blue-light { color: var(--fixify-blue-light); }
+.text-fixify-blue-lighter { color: var(--fixify-blue-lighter); }
+
+.border-fixify-navy { border-color: var(--fixify-navy); }
+.border-fixify-blue-dark { border-color: var(--fixify-blue-dark); }
+.border-fixify-blue { border-color: var(--fixify-blue); }
+.border-fixify-blue-light { border-color: var(--fixify-blue-light); }
+.border-fixify-blue-lighter { border-color: var(--fixify-blue-lighter); }
+
+/* Nouvelles classes pour les effets de glassmorphisme avancés */
+.glass-premium {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Effets de transition fluides */
+.transition-smooth {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-elastic {
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Effet de néon subtil */
+.glow-soft {
+  box-shadow: 0 0 20px rgba(0, 27, 72, 0.1);
+}
+
+.glow-medium {
+  box-shadow: 0 0 30px rgba(0, 27, 72, 0.2);
+}
+
+.glow-strong {
+  box-shadow: 0 0 40px rgba(0, 27, 72, 0.3);
+}
